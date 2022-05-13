@@ -7,7 +7,9 @@ export default function GameComponent() {
         "USA": "Washington DC",
         "Srilanka": "Colombo"
     }
-    const placeData = ["India", "Delhi", "Islamabad", "Pakistan", "USA", "Washington DC", "Srilanka", "Colombo"];
+
+    var placeData = []
+
     const colorData = {
         "India": "white", "Delhi": "white", "Islamabad": "white", "Pakistan": "white", "USA": "white", "Washington DC": "white", "Srilanka": "white", "Colombo": "white"
     }
@@ -72,7 +74,7 @@ export default function GameComponent() {
         setDisability(tempDisable)
     }
 
-    const performShuffling = () => {
+    const performShuffling = (placeData) => {
         var len = placeData.length
         for(var i=0;i<len;i++) {
             var randomIdx = Math.floor((Math.random() * len));
@@ -80,15 +82,16 @@ export default function GameComponent() {
             placeData[randomIdx] = placeData[i]
             placeData[i] = temp
         }
-        setPlaces(placeData)
+        return placeData
     }
 
     const convertDataFromMapToArray = () => {
-        var placeData = []
+        // var placeData = []
         Object.keys(data).forEach(key => {
             placeData.push(key);
             placeData.push(data[key]);
         })
+        return placeData
     }
 
     const handleClick = (event) => {
@@ -127,19 +130,11 @@ export default function GameComponent() {
      //Hooks
      const [colors,setColors] = useState(colorData)
      const [disability,setDisability] = useState(disabledData)
-     const [places,setPlaces] = useState(placeData)
+     const [places,setPlaces] = useState(performShuffling(convertDataFromMapToArray()))
      const [selectedButtons,setSelectedButtons] = useState([])
      
-     useEffect(() => {
-        //  performShuffling()
-        var len = placeData.length
-        for(var i=0;i<len;i++) {
-            var randomIdx = Math.floor((Math.random() * len));
-            var temp  = placeData[randomIdx]
-            placeData[randomIdx] = placeData[i]
-            placeData[i] = temp
-        }
-        setPlaces(placeData)
+    useEffect(() => {
+        
     },[])
 
     return (
