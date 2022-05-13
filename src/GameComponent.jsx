@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function GameComponent() {
-    const data = {
-        "India": "Delhi",
-        "Pakistan": "Islamabad",
-        "USA": "Washington DC",
-        "Srilanka": "Colombo"
-    }
+export default function GameComponent({data}) {
 
     var placeData = []
 
@@ -134,7 +128,7 @@ export default function GameComponent() {
      const [selectedButtons,setSelectedButtons] = useState([])
      
     useEffect(() => {
-        
+
     },[])
 
     return (
