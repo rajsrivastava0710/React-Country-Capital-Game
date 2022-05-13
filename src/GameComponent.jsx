@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function GameComponent({data}) {
 
-    var placeData = []
-
     const colorData = {
         "India": "white", "Delhi": "white", "Islamabad": "white", "Pakistan": "white", "USA": "white", "Washington DC": "white", "Srilanka": "white", "Colombo": "white"
     }
@@ -80,7 +78,7 @@ export default function GameComponent({data}) {
     }
 
     const convertDataFromMapToArray = () => {
-        // var placeData = []
+        var placeData = []
         Object.keys(data).forEach(key => {
             placeData.push(key);
             placeData.push(data[key]);
@@ -121,10 +119,26 @@ export default function GameComponent({data}) {
         }
     }
 
+    const getColorMap = () => {
+        const colorMap = {}
+        for (var place in places) {
+            colorMap[place] = "white"
+        }
+        return colorMap
+    }
+
+    const getDisabledMap = () => {
+        const disabledMap = {}
+        for (var place in places) {
+            disabledMap[place] = false
+        }
+        return disabledMap
+    }
+
      //Hooks
-     const [colors,setColors] = useState(colorData)
-     const [disability,setDisability] = useState(disabledData)
      const [places,setPlaces] = useState(performShuffling(convertDataFromMapToArray()))
+     const [colors,setColors] = useState(getColorMap())
+     const [disability,setDisability] = useState(getDisabledMap())
      const [selectedButtons,setSelectedButtons] = useState([])
      
     useEffect(() => {
