@@ -2,13 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function GameComponent({data}) {
 
-    const colorData = {
-        "India": "white", "Delhi": "white", "Islamabad": "white", "Pakistan": "white", "USA": "white", "Washington DC": "white", "Srilanka": "white", "Colombo": "white"
-    }
-    const disabledData = {
-        "India": false, "Delhi": false, "Islamabad": false, "Pakistan": false, "USA": false, "Washington DC": false, "Srilanka": false, "Colombo": false
-    }
-
     const applyResetCondition = (placeValue, tempColors, tempDisable) => {
         var first = selectedButtons[0], second = selectedButtons[1];
         tempDisable[first] = false
@@ -142,7 +135,7 @@ export default function GameComponent({data}) {
      const [selectedButtons,setSelectedButtons] = useState([])
      
     useEffect(() => {
-
+        //console.log("Loaded")
     },[])
 
     return (
@@ -158,10 +151,6 @@ export default function GameComponent({data}) {
                         style = {{background: colors[place]}}>{place}</button>
                 </div>
                 ))
-                // Object.keys(data).forEach(key => {
-                //     // console.log(key)
-                //     // <div>{key}</div>
-                // })
             }
 
             {
