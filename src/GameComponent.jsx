@@ -87,15 +87,12 @@ export default function GameComponent({data}) {
         //already 2 selected
         if(selectedButtons.length == 2) {
             applyResetCondition(placeValue, tempColors, tempDisable)
-            //Why does this not work, when not using return (figure it out...)
-            return
         }
 
         //first selection
-        if(selectedButtons.length === 0) {
+        else if(selectedButtons.length === 0) {
         
             makeChangeForFirstChoice(placeValue, tempColors, tempDisable)
-            return
         
         } else {
 
